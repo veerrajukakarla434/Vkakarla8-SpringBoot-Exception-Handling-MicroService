@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = { "com.vkakarla.springboot.exception.handling.repo" })
-@ComponentScan(value = "com.vkakarla.springboot.exception.handling")
+@ComponentScan(value = "com.vkakarla.springboot.exception.handling.*")
 @EntityScan(basePackages = { "com.vkakarla.springboot.exception.handling.entities" })
 @EnableSwagger2
 public class Vkakarla8SpringBootExceptionHandlingMicroServiceApplication {

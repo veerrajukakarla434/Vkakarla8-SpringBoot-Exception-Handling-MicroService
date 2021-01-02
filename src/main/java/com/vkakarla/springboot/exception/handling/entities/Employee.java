@@ -8,10 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name="employee", schema = "new_schema123")
 public class Employee implements Serializable {
-    
+    	
 	/**
 	 * 
 	 */
@@ -38,7 +41,6 @@ public class Employee implements Serializable {
 	@Column(name="email")
 	private String email;
 	
-	@NotEmpty(message = "address must not be empty")
 	@Column(name="address")
 	private String address;
 
@@ -90,10 +92,5 @@ public class Employee implements Serializable {
 		this.address = address;
 	}
 
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", department="
-				+ department + ", email=" + email + ", address=" + address + "]";
-	}
 	
 }
