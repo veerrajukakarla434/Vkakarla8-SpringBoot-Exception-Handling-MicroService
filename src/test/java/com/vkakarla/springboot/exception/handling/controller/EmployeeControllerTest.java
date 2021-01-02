@@ -57,9 +57,9 @@ public class EmployeeControllerTest {
 			String empString = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("testdata/employeeResponse.json"), "UTF-8");
 			employeeResponse = objectMapper.readValue(empString, new TypeReference<Employee>() {});
 			
-			when(employeeRepository.getOne((long) 101)).thenReturn(employeeResponse);
-			
+			when(employeeRepository.getEmbloyeById((long) 101)).thenReturn(employeeResponse);
 			ResponseEntity<Object> response = employeeController.getEmployee((long)101);
+			
 			assertNotNull(response);
 			assertEquals(HttpStatus.OK, response.getStatusCode());
 			
@@ -76,7 +76,7 @@ public class EmployeeControllerTest {
 		
 		try {
 			 
-			when(employeeRepository.getOne((long) -101)).thenThrow(new RuntimeException());
+			when(employeeRepository.getEmbloyeById((long) -101)).thenThrow(new RuntimeException());
 			ResponseEntity<Object> rponse = employeeController.getEmployee((long)-101);
 			
 			
@@ -92,7 +92,7 @@ public class EmployeeControllerTest {
 	public void given_ValidEmpIdButNoRecord_when_calling_getEmployee_then_return_ErrorDetails() {
 		
 		try {
-			when(employeeRepository.getOne((long) 104)).thenReturn(null);
+			when(employeeRepository.getEmbloyeById((long) 104)).thenReturn(null);
 			ResponseEntity<Object> rponse = employeeController.getEmployee((long)104);
 			
 		} catch (CustomException ex) { 
